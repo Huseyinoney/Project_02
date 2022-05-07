@@ -4,10 +4,8 @@ from discum.gateway.session import Session
 
 from users_data_to_db import mySQL_client
 
-
-
-      
-bot = discum.Client(token="ODgwODgzMDMxNzQzODA3NTI4.YT-T1g.9XOpjj1rRSPbWLDXnrFDWEeS778")
+  
+bot = discum.Client(token="")
 
 def close_after_fetching(resp, guild_id):
     if bot.gateway.finishedMemberFetching(guild_id):
@@ -29,17 +27,17 @@ for userID in members:
     
     try:
         user_name=(members[userID]['nick'])
-        
+    except NameError:
+        if (user_name)==None:
+            continue
+        print("bot atlandı")
     except KeyError:
         print("üzgünüz elendiniz")
     except TypeError:
         print("bot atlandı")        
-    if user_name==None:
-        continue
     else:
-        memberslist1.append(userID)
-        memberslist2.append(user_name)
-
+        memberslist1+=[userID]
+        memberslist2+=[user_name]
 
 
 y = len(memberslist1)
